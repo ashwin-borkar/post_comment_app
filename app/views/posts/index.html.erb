@@ -1,0 +1,40 @@
+<% content_for :page_title,  "Index" %>
+
+
+
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Action</th>
+  </tr>
+  <tbody>
+    <% @posts.each do |post| %>
+    <tr>
+      <td><%= link_to post.post_title, post  %></td>
+      <td><%= post.post_description %></td>
+      <td><%= link_to 'Show', post_path(post),class:'btn btn-mini btn-primary' %>
+        <%= link_to 'Edit', edit_post_path(post),class:'btn btn-mini btn-success' %>
+        <%= link_to 'Destroy', post_path(post),class:'btn btn-mini btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+    <% end %>
+  </tbody>
+  
+</table>
+
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+
+table {
+  width: 100%;
+}
+</style>
+
+<div id="navbarMenuHeroA" class="navbar-menu">
+  <div class="navbar-end">
+    <%= link_to "Create New Post", new_post_path, class:"navbar-item" %>
+  </div>
+</div>
